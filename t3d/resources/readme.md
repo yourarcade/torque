@@ -1,1 +1,1 @@
-<h1>Place for torque resources</h2>
+<h1>Place for T3D resources</h2>
