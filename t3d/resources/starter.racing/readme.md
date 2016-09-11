@@ -8,7 +8,7 @@
 <p>The game is controlled by a handful of global variables set in /sripts/server/game.cs as follows:</p>
 <table>
 <tr><td>$Game::laps</td><td>Number of laps per race</td></tr>
-<tr><td>$Game::autoStart</td><td>If true, the race starts automatically after WaitTime seconds.<br>If false, each race is started with a keyboard command (ctrl+s)</td></tr>
+<tr><td>$Game::autoStart</td><td>If true, the race starts automatically after $Game::WaitTime seconds.<br>If false, each race is started with a keyboard command (ctrl+s)</td></tr>
 <tr><td>$Game::WaitTime</td><td>How long to wait for players to enter the game before starting a race (if autoStart=true).</td></tr>
 <tr><td>$Game::EndGamePause</td><td>How long to display the scoreboard after a race is complete.</td></tr>
 </table>
