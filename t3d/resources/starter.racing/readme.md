@@ -10,11 +10,11 @@
 <tr><td>$Game::laps</td><td>Number of laps per race</td></tr>
 <tr><td>$Game::autoStart</td><td>If true, the race starts automatically after WaitTime seconds.<br>If false, each race is started with a keyboard command (ctrl+s)</td></tr>
 <tr><td>$Game::WaitTime</td><td>How long to wait for players to enter the game before starting a race (if autoStart=true).</td></tr>
-<tr><td>$Game::EndGamePause</td><td>How long the scoreboard displays for after a race is done</td></tr>
+<tr><td>$Game::EndGamePause</td><td>How long to display the scoreboard after a race is complete.</td></tr>
 </table>
 <p>Checkpoints are laid out using standard trigger objects defined with the following fields:</p>
 <table>
-<tr><td>datablock</td><td>must be CheckpointTrigger.</td></tr>
+<tr><td>datablock</td><td>must be "<b>CheckpointTrigger</b>".</td></tr>
 <tr><td>checkpoint</td><td>Integer defining the order checkpoints should be entered.</td></tr>
 <tr><td>isLast</td><td>Boolean defining which checkpoint ends the race.</td></tr>
 </table>
