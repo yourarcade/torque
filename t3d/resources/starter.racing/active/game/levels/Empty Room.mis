@@ -1,0 +1,165 @@
+//--- OBJECT WRITE BEGIN ---
+new SimGroup(MissionGroup) {
+   canSave = "1";
+   canSaveDynamicFields = "1";
+      enabled = "1";
+
+   new LevelInfo(theLevelInfo) {
+      nearClip = "0.1";
+      visibleDistance = "2000";
+      visibleGhostDistance = "0";
+      decalBias = "0.0015";
+      fogColor = "1 1 0.6 1";
+      fogDensity = "0.001";
+      fogDensityOffset = "10";
+      fogAtmosphereHeight = "100";
+      canvasClearColor = "233 220 143 255";
+      ambientLightBlendPhase = "1";
+      ambientLightBlendCurve = "0 0 -1 -1";
+      advancedLightmapSupport = "0";
+      soundAmbience = "AudioAmbienceDefault";
+      soundDistanceModel = "Linear";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+         desc0 = "Port of the TGE starter.racing demo.";
+         enabled = "1";
+         levelName = "Track1";
+   };
+   new ScatterSky() {
+      skyBrightness = "30";
+      sunSize = "1";
+      colorizeAmount = "0";
+      colorize = "0 0 0 1";
+      rayleighScattering = "0.0035";
+      sunScale = "1 1 0.8 1";
+      ambientScale = "0.5 0.5 0.4 1";
+      fogScale = "1 1 1 1";
+      exposure = "0.85";
+      zOffset = "0";
+      azimuth = "84";
+      elevation = "54";
+      moonAzimuth = "0";
+      moonElevation = "45";
+      castShadows = "1";
+      brightness = "1";
+      flareScale = "1";
+      nightColor = "0.0196078 0.0117647 0.109804 1";
+      nightFogColor = "0.0196078 0.0117647 0.109804 1";
+      moonEnabled = "1";
+      moonScale = "0.3";
+      moonLightColor = "0.192157 0.192157 0.192157 1";
+      useNightCubemap = "0";
+      attenuationRatio = "0 1 1";
+      shadowType = "PSSM";
+      texSize = "1024";
+      overDarkFactor = "3000 2000 1000 250";
+      shadowDistance = "400";
+      shadowSoftness = "0.25";
+      numSplits = "4";
+      logWeight = "0.96";
+      fadeStartDistance = "325";
+      lastSplitTerrainOnly = "0";
+      representedInLightmap = "0";
+      shadowDarkenColor = "0 0 0 -1";
+      includeLightmappedGeometryInShadow = "0";
+      position = "0 0 0";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+         mieScattering = "0.0015";
+         moonTexture = "core/art/skies/night/moon_wglow";
+         moonTint = "0.192157 0.192157 0.192157 1";
+         sunBrightness = "50";
+   };
+   new TerrainBlock(Terrain) {
+      terrainFile = "art/terrains/Empty Room2.ter";
+      castShadows = "1";
+      squareSize = "8";
+      baseTexSize = "1024";
+      baseTexFormat = "JPG";
+      lightMapSize = "256";
+      screenError = "16";
+      position = "-1024 -1024 0";
+      rotation = "1 0 0 0";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+   };
+   new SimGroup(PlayerDropPoints) {
+      canSave = "1";
+      canSaveDynamicFields = "1";
+         enabled = "1";
+
+      new SpawnSphere() {
+         autoSpawn = "0";
+         spawnTransform = "0";
+         radius = "5";
+         sphereWeight = "1";
+         indoorWeight = "1";
+         outdoorWeight = "1";
+         isAIControlled = "0";
+         dataBlock = "SpawnSphereMarker";
+         position = "-3.51733 25.6932 521.948";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+            enabled = "1";
+            homingCount = "0";
+            lockCount = "0";
+      };
+   };
+   new Trigger(checkpoint5) {
+      polyhedron = "-0.5000000 0.5000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+      position = "-4.111 6.11351 511.881";
+      rotation = "1 0 0 0";
+      scale = "30 10 20";
+	  dataBlock = "CheckPointTrigger";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+         checkpoint = "5";
+         isLast = "1";
+   };
+   new Trigger(checkpoint1) {
+      polyhedron = "-0.5000000 0.5000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+      position = "-128.936 164.092 506.574";
+      rotation = "0 0 -1 7.01197";
+      scale = "10 30 20";
+	  dataBlock = "CheckPointTrigger";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+         checkpoint = "1";
+   };
+   new Trigger(checkpoint2) {
+      polyhedron = "-0.5000000 0.5000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+      position = "-281.794 108.908 510.667";
+      rotation = "0 0 1 37.8375";
+      scale = "40 10 20";
+	  dataBlock = "CheckPointTrigger";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+         checkpoint = "2";
+   };
+   new Trigger(checkpoint3) {
+      polyhedron = "-0.5000000 0.5000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+      position = "-390.062 -91.843 509.226";
+      rotation = "1 0 0 0";
+      scale = "40 10 20";
+	  dataBlock = "CheckPointTrigger";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+         checkpoint = "3";
+   };
+   new Trigger(checkpoint4) {
+      polyhedron = "-0.5000000 0.5000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+      position = "-254.907 -190.405 511.012";
+      rotation = "0 0 -1 69.0189";
+      scale = "40 10 20";
+      canSave = "1";
+	  dataBlock = "CheckPointTrigger";
+      canSaveDynamicFields = "1";
+         checkpoint = "4";
+   };
+};
+//--- OBJECT WRITE END ---
+

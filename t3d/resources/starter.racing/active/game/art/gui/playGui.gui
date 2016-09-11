@@ -1,0 +1,205 @@
+//--- OBJECT WRITE BEGIN ---
+%guiContent = new GameTSCtrl(PlayGui) {
+   canSaveDynamicFields = "1";
+   isContainer = "1";
+   Profile = "GuiContentProfile";
+   HorizSizing = "right";
+   VertSizing = "bottom";
+   position = "0 0";
+   Extent = "1024 768";
+   MinExtent = "8 8";
+   canSave = "1";
+   Visible = "1";
+   tooltipprofile = "GuiToolTipProfile";
+   hovertime = "1000";
+   Margin = "0 0 0 0";
+   Padding = "0 0 0 0";
+   AnchorTop = "1";
+   AnchorBottom = "0";
+   AnchorLeft = "1";
+   AnchorRight = "0";
+   cameraZRot = "0";
+   forceFOV = "0";
+      Enabled = "1";
+      helpTag = "0";
+      noCursor = "1";
+
+   new GuiBitmapCtrl(CenterPrintDlg) {
+      canSaveDynamicFields = "0";
+      isContainer = "0";
+      Profile = "CenterPrintProfile";
+      HorizSizing = "center";
+      VertSizing = "center";
+      position = "237 375";
+      Extent = "550 20";
+      MinExtent = "8 8";
+      canSave = "1";
+      Visible = "0";
+      tooltipprofile = "GuiToolTipProfile";
+      hovertime = "1000";
+      bitmap = "art/gui/hudfill.png";
+      wrap = "0";
+
+      new GuiMLTextCtrl(CenterPrintText) {
+         canSaveDynamicFields = "0";
+         isContainer = "0";
+         Profile = "CenterPrintTextProfile";
+         HorizSizing = "center";
+         VertSizing = "center";
+         position = "0 0";
+         Extent = "546 12";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         tooltipprofile = "GuiToolTipProfile";
+         hovertime = "1000";
+         lineSpacing = "2";
+         allowColorChars = "0";
+         maxChars = "-1";
+         useURLMouseCursor = "0";
+      };
+   };
+   new GuiBitmapCtrl(BottomPrintDlg) {
+      canSaveDynamicFields = "0";
+      isContainer = "0";
+      Profile = "CenterPrintProfile";
+      HorizSizing = "center";
+      VertSizing = "top";
+      position = "237 719";
+      Extent = "550 20";
+      MinExtent = "8 8";
+      canSave = "1";
+      Visible = "0";
+      tooltipprofile = "GuiToolTipProfile";
+      hovertime = "1000";
+      bitmap = "art/gui/hudfill.png";
+      wrap = "0";
+
+      new GuiMLTextCtrl(BottomPrintText) {
+         canSaveDynamicFields = "0";
+         isContainer = "0";
+         Profile = "CenterPrintTextProfile";
+         HorizSizing = "center";
+         VertSizing = "center";
+         position = "0 0";
+         Extent = "546 12";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         tooltipprofile = "GuiToolTipProfile";
+         hovertime = "1000";
+         lineSpacing = "2";
+         allowColorChars = "0";
+         maxChars = "-1";
+         useURLMouseCursor = "0";
+      };
+   };
+   
+   new GuiBitmapCtrl(LagIcon) {
+      bitmap = "art/gui/lagIcon.png";
+      wrap = "0";
+      position = "572 3";
+      extent = "32 32";
+      minExtent = "8 8";
+      horizSizing = "right";
+      vertSizing = "bottom";
+      profile = "GuiDefaultProfile";
+      visible = "0";
+      active = "1";
+      tooltipProfile = "GuiToolTipProfile";
+      hovertime = "1000";
+      isContainer = "0";
+      hidden = "1";
+      canSave = "1";
+      canSaveDynamicFields = "0";
+   };
+   new GuiShapeNameHud() {
+      fillColor = "0 0 0 0.25";
+      frameColor = "0 1 0 1";
+      textColor = "0 1 0 1";
+      labelFillColor = "0.25 0.25 0.25 0.25";
+      labelFrameColor = "0 1 0 1";
+      showFill = "0";
+      showFrame = "0";
+      showLabelFill = "0";
+      showLabelFrame = "0";
+      labelPadding = "0 0";
+      verticalOffset = "0.2";
+      distanceFade = "0.1";
+      position = "0 0";
+      extent = "1024 768";
+      minExtent = "8 8";
+      horizSizing = "width";
+      vertSizing = "height";
+      profile = "GuiModelessDialogProfile";
+      visible = "1";
+      active = "1";
+      tooltipProfile = "GuiToolTipProfile";
+      hovertime = "1000";
+      isContainer = "0";
+      canSave = "1";
+      canSaveDynamicFields = "0";
+   };
+
+   new GuiBitmapCtrl(Counter) {
+      profile = "GuiDefaultProfile";
+      horizSizing = "center";
+      vertSizing = "center";
+      position = "130 110";
+      extent = "380 260";
+      minExtent = "8 2";
+      visible = "0";
+      bitmap = "./go.png";
+      wrap = "0";
+   };
+   new GuiTextCtrl(LapCounter) {
+      profile = "GuiBigTextProfile";
+      horizSizing = "left";
+      vertSizing = "bottom";
+      position = "450 5";
+      extent = "170 39";
+      minExtent = "8 2";
+      visible = "1";
+      text = "Laps: 0";
+      maxLength = "255";
+   }; 
+
+   new GuiControl(instrumentCluster) {
+      position = "0 0";
+      extent = "202 202";
+      minExtent = "8 2";
+      horizSizing = "right";
+      vertSizing = "bottom";
+      profile = "GuiDefaultProfile";
+      visible = "1";
+      active = "1";
+      tooltipProfile = "GuiToolTipProfile";
+      hovertime = "1000";
+      isContainer = "1";
+      canSave = "1";
+      canSaveDynamicFields = "1";   
+
+		new GuiSpeedometerHud(speedometerHud) {
+			profile = "GuiDefaultProfile";
+			horizSizing = "top";
+			vertSizing = "left";
+			position = "0 0";
+			extent = "200 200";
+			minExtent = "8 2";
+			visible = "1";
+			bitmap = "./speedometer";
+			wrap = "0";
+			maxSpeed = "35.7";
+			minAngle = "135";
+			maxAngle = "300";
+			color = "1.000000 0.300000 0.300000 1.000000";
+			center = "130.000000 123.000000";
+			length = "100";
+			width = "2";
+			tail = "0";
+		};
+		
+	};
+	
+};
+//--- OBJECT WRITE END ---
