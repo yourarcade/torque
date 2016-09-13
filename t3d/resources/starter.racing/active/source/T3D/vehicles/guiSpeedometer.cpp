@@ -50,6 +50,7 @@ class GuiSpeedometerHud : public GuiBitmapCtrl
 
    bool mClampNeedleAngle;	// KGB
    bool mForceBitmapRender;	// KGB
+   F32 mTorqueUnitScale; // KGB: scale of torque units to meters
 
 public:
    GuiSpeedometerHud();
@@ -57,8 +58,6 @@ public:
    void onRender( Point2I, const RectI &);
    static void initPersistFields();
 
-   // KGB: Debugging/setup flags
-   F32 mWorldUnitScale;
    F32 mphToVel(F32 mph);
    F32 kphToVel(F32 kph);
    F32	mCalibrateSpeed;
@@ -84,16 +83,17 @@ ConsoleDocClass( GuiSpeedometerHud,
    "The control renders the speedometer needle as a colored quad, rotated to "
    "indicate the Vehicle speed as determined by the <i>minAngle</i>, "
    "<i>maxAngle</i>, and <i>maxSpeed</i> properties. This class extends GuiBitmapCtrl "
-   "and will render a background image representing the speedometer dial.\n\n"
+   "and will render a specified background image representing the speedometer dial.\n\n"
 
-   "Speed (maxSpeed) is represented as object velocity. Scaling routines for mph/kph assume"
-   "that 1 torque unit ~= 1 meter.\n\n"
+   "Speed variables (maxSpeed/minSpeed) represent raw object velocity. Calculations"
+   "for mph/kph are derived using torqueUnitScale. The torqueUnitScale value defaults"
+   "to 1 torque unit = 1 meter.\n\n"
    
    "@tsexample\n"
    "new GuiSpeedometerHud()\n"
    "{\n"
    "   bitmap = \"art/gui/speedometer\";\n"
-   "   maxSpeed = \"35.7632\"; // ~80 MPH.\n" 
+   "   maxSpeed = \"35.7632\";\n" 
    "   minAngle = \"135\";\n"
    "   maxAngle = \"300\";\n"
    "   color = \"1 0.3 0.3 1\";\n"
@@ -101,9 +101,11 @@ ConsoleDocClass( GuiSpeedometerHud,
    "   length = \"100\";\n"
    "   width = \"2\";\n"
    "   tail = \"0\";\n"
+   "   forceBitmapRender = \"false\";\n"
    "   clampNeedleAngle = \"false\";\n"
    "   calibrateSpeed = \"0\";\n"
    "   calibrateAngle = \"0\";\n"
+   "   torqueUnitScale = \"1\";\n"
 
    "   //Properties not specific to this control have been omitted from this example.\n"
    "};\n"
@@ -128,6 +130,7 @@ GuiSpeedometerHud::GuiSpeedometerHud()
    mCalibrateSpeed = 0;
    mCalibrateAngle = 0;
    mForceBitmapRender = false;
+   mTorqueUnitScale = 1;	// 1 torque unit = 1 meter
 }
 
 void GuiSpeedometerHud::initPersistFields()
@@ -173,7 +176,8 @@ void GuiSpeedometerHud::initPersistFields()
       "Set a forced output angle to be rendered for calibration. Will cause control to render without vehicle mount/control object. Setting to 0 disables." );
    addField("forceBitmapRender", TypeBool, Offset( mForceBitmapRender, GuiSpeedometerHud ),
       "Clamp needle to maxAngle when the Vehicle speed is >= maxSpeed. ");
-
+   addField("torqueUnitScale", TypeF32, Offset( mTorqueUnitScale, GuiSpeedometerHud ),
+      "Meters per torque unit." );
    endGroup("Calibration");
    Parent::initPersistFields();
 }
@@ -183,7 +187,7 @@ void GuiSpeedometerHud::initPersistFields()
 /**
    Gui onRender method.
    Will only render if the controlObject is a vehicle or vehicle-mounted player
-   unless either mCalibrateRPM or mCalibrateAngle is greater than 0.
+   unless mCalibrateSpeed || mCalibrateAngle > 0 or mForceBitmapRender = true.
 */
 void GuiSpeedometerHud::onRender(Point2I offset, const RectI &updateRect)
 {
@@ -216,7 +220,7 @@ void GuiSpeedometerHud::onRender(Point2I offset, const RectI &updateRect)
 	if(mCalibrateSpeed > 0 || !vehicle){
 		mSpeed = mCalibrateSpeed;
 	}else{
-		mSpeed = vehicle->getVelocity().len();
+		mSpeed = vehicle->getVelocity().len() * mTorqueUnitScale;
 	}
 	 //mSpeed = vehicle->getVelocity().len();
 	// Calculate center point if none specified
@@ -259,7 +263,7 @@ void GuiSpeedometerHud::onRender(Point2I offset, const RectI &updateRect)
 }
 
 F32 GuiSpeedometerHud::kphToVel(F32 kph){
-	return ((kph*1000) / 60) / 60;
+	return ((kph * 1000 * mTorqueUnitScale) / 60) / 60;
 }
 
 F32 GuiSpeedometerHud::mphToVel(F32 mph){
