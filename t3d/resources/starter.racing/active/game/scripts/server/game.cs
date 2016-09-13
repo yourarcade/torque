@@ -22,7 +22,7 @@
 
 $Game::laps = 3;			// Number of laps per race
 $Game::WaitTime = 2;		// How long to wait for players to enter the game before starting a race (if autoStart=true).
-$Game::EndGamePause = 10;	// How long the scoreboard displays for after a race is done
+$Game::EndGamePause = 7;	// How long the scoreboard displays for after a race is done
 $Game::autoStart = false;	// If true, the race starts automatically after WaitTime seconds.
 							// If false, each race is started with a keyboard command (ctrl+s)
 //-----------------------------------------------------------------------------
@@ -335,7 +335,7 @@ function GameConnection::createCar(%this, %spawnPoint)
    MissionCleanup.add(%car);
    // Player setup...
    %car.setTransform(%spawnPoint.getTransform());
-   %car.setShapeName(%this.name);
+   %car.setShapeName("Racer");
 
    // Update the camera to start with the player
    %this.camera.setTransform(%car.getEyeTransform());

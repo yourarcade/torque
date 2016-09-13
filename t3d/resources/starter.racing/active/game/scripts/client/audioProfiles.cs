@@ -13,14 +13,14 @@
 // ============================================================
 
 
-datablock SFXProfile(Beep1Sound)
+datablock SFXProfile(Sound_Beep1)
 {
    fileName = "art/sound/beep1.wav";
    description = Audio2D;
    preload = true;
 };
 
-datablock SFXProfile(Beep2Sound)
+datablock SFXProfile(Sound_Beep2)
 {
    fileName = "art/sound/beep2.wav";
    description = Audio2D;

@@ -41,7 +41,7 @@ function clientCmdSetCounter(%count)
 
 	counter.setBitmap("art/gui/" @ %count @ ".png");
 	sfxPlayOnce(Audio2D, "art/sound/beep1.wav");
-   
+
 
 	
 }

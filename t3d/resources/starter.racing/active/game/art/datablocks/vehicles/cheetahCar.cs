@@ -328,12 +328,7 @@ datablock WheeledVehicleData(CheetahCar)
    shapeFile = "art/shapes/Cheetah/Cheetah_Body.DAE";
    emap = 1;
 
-   mountPose[0] = sitting;
-   numMountPoints = 6;
-
-   useEyePoint = false;  // Use the vehicle's camera node rather than the player's
-
-
+   useEyePoint = true;  // Use the vehicle's camera node rather than the player's
    maxSteeringAngle = 0.585;  // Maximum steering angle, should match animation
 
    // 3rd person camera settings
@@ -375,15 +370,12 @@ datablock WheeledVehicleData(CheetahCar)
    //squealSound = cheetahSqueal;
    softImpactSound = softImpact;
    hardImpactSound = hardImpact;
+   
+   // Particles
+   tireEmitter = "CheetahTireEmitter";
 
    // Dynamic fields accessed via script
-   nameTag = 'Cheetah';
-   maxDismountSpeed = 10;
-   maxMountSpeed = 5;
-   mountPose0 = "sitting";
-   tireEmitter = "CheetahTireEmitter";
-   dustEmitter = "CheetahTireEmitter";
-   dustHeight = "1";
+   nameTag = 'Cheetah';   
 
    // Mount slots
    turretSlot = 1;
