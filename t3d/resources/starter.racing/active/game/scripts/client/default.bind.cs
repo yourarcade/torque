@@ -489,6 +489,7 @@ GlobalActionMap.bindCmd(keyboard, "alt enter", "", "Canvas.attemptFullscreenTogg
 // The key command for flipping the car
 //vehicleMap.bindCmd(keyboard, "ctrl x", "commandToServer(\'flipCar\');", "");
 moveMap.bindCmd(keyboard, "ctrl s", "commandToServer(\'doStartGame\');", "");
+moveMap.bindCmd(keyboard, "ctrl f", "commandToServer(\'Reset\');", "");
 
 
 function getOut()

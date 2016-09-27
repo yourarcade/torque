@@ -31,5 +31,7 @@ function serverCmdReset(%client)
       %client.spawnCar();
       %client.setControlObject(%client.car);
       %client.nextCheck = 1;
+   } else {
+      warn("Can't reset, no car.");
    }
 }

@@ -40,7 +40,7 @@ datablock SFXProfile(BuggyEngineSound){
    preload = "1";
    description = "AudioCloseLoop3D";
    fileName = "art/sound/cheetah/cheetah_engine.ogg";
-}
+};
 
 datablock ParticleData(BuggyTireParticle)
 {
@@ -159,7 +159,7 @@ datablock WheeledVehicleEngine(BuggyEngine) {
 datablock WheeledVehicleData(TgeBuggyCar)
 {
    category = "Vehicles";
-   shapeFile = "art/shapes/tgeBuggy.dts";
+   shapeFile = "art/shapes/tgeBuggy/buggy.dts";
    emap = true;
 
    maxDamage = 1.0;
@@ -194,8 +194,17 @@ datablock WheeledVehicleData(TgeBuggyCar)
    collisionTol = 0.1;        // Collision distance tolerance
    contactTol = 0.1;          // Contact velocity tolerance
 
+
+   // Engine
+   engineTorque = 4300;       // Engine power
+   engineBrake = "5000";         // Braking when throttle is 0
+   maxWheelSpeed = 50;        // Engine scale by current speed / max speed   
+   
    // Brakes
-   brakeTorque = 8000;        // When brakes are applied   
+   brakeTorque = "10000";        // When brakes are applied
+
+
+
 
    // Energy
    maxEnergy = 100;

@@ -99,7 +99,25 @@ new SimGroup(MissionGroup) {
          outdoorWeight = "1";
          isAIControlled = "0";
          dataBlock = "SpawnSphereMarker";
-         position = "-3.51733 25.6932 521.948";
+         position = "-12.3 25.69 517.8";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+            enabled = "1";
+            homingCount = "0";
+            lockCount = "0";
+      };
+      new SpawnSphere() {
+         autoSpawn = "0";
+         spawnTransform = "0";
+         radius = "5";
+         sphereWeight = "1";
+         indoorWeight = "1";
+         outdoorWeight = "1";
+         isAIControlled = "0";
+         dataBlock = "SpawnSphereMarker";
+         position = "-3.5 25.69 517.8";
          rotation = "1 0 0 0";
          scale = "1 1 1";
          canSave = "1";
@@ -111,10 +129,10 @@ new SimGroup(MissionGroup) {
    };
    new Trigger(checkpoint5) {
       polyhedron = "-0.5000000 0.5000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+      dataBlock = "CheckPointTrigger";
       position = "-4.111 6.11351 511.881";
       rotation = "1 0 0 0";
       scale = "30 10 20";
-	  dataBlock = "CheckPointTrigger";
       canSave = "1";
       canSaveDynamicFields = "1";
          checkpoint = "5";
@@ -122,41 +140,41 @@ new SimGroup(MissionGroup) {
    };
    new Trigger(checkpoint1) {
       polyhedron = "-0.5000000 0.5000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+      dataBlock = "CheckPointTrigger";
       position = "-128.936 164.092 506.574";
       rotation = "0 0 -1 7.01197";
       scale = "10 30 20";
-	  dataBlock = "CheckPointTrigger";
       canSave = "1";
       canSaveDynamicFields = "1";
          checkpoint = "1";
    };
    new Trigger(checkpoint2) {
       polyhedron = "-0.5000000 0.5000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+      dataBlock = "CheckPointTrigger";
       position = "-281.794 108.908 510.667";
       rotation = "0 0 1 37.8375";
       scale = "40 10 20";
-	  dataBlock = "CheckPointTrigger";
       canSave = "1";
       canSaveDynamicFields = "1";
          checkpoint = "2";
    };
    new Trigger(checkpoint3) {
       polyhedron = "-0.5000000 0.5000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+      dataBlock = "CheckPointTrigger";
       position = "-390.062 -91.843 509.226";
       rotation = "1 0 0 0";
       scale = "40 10 20";
-	  dataBlock = "CheckPointTrigger";
       canSave = "1";
       canSaveDynamicFields = "1";
          checkpoint = "3";
    };
    new Trigger(checkpoint4) {
       polyhedron = "-0.5000000 0.5000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+      dataBlock = "CheckPointTrigger";
       position = "-254.907 -190.405 511.012";
       rotation = "0 0 -1 69.0189";
       scale = "40 10 20";
       canSave = "1";
-	  dataBlock = "CheckPointTrigger";
       canSaveDynamicFields = "1";
          checkpoint = "4";
    };

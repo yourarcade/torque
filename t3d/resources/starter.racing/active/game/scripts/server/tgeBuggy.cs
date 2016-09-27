@@ -29,9 +29,5 @@ function TgeBuggyCar::onAdd(%this,%obj)
    // Only power the two rear wheels...
    %obj.setWheelPowered(2,true);
    %obj.setWheelPowered(3,true);
-   
-   // Set engine and overrides
-   %obj.setEngine( BuggyEngine );
-   %obj.fuelFlow = .2;
 
 }

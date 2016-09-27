@@ -31,3 +31,4 @@ exec("./environment.cs");
 
 // Load the vehicle datablocks
 exec("./vehicles/cheetahCar.cs");
+exec("./vehicles/tgeBuggyCar.cs");

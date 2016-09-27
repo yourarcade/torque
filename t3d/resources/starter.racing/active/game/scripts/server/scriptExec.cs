@@ -22,6 +22,6 @@
 
 // Load up all scripts.  This function is called when
 // a server is constructed.
-exec("./vehicleWheeled.cs");
 exec("./cheetah.cs");
+exec("./tgeBuggy.cs");
 exec("./checkpoint.cs");

@@ -35,8 +35,8 @@ $Game::autoStart = false;	// If true, the race starts automatically after WaitTi
 
 // Leave $Game::defaultPlayerClass and $Game::defaultPlayerDataBlock as empty strings ("")
 // to spawn a the $Game::defaultCameraClass as the control object.
-$Game::DefaultPlayerClass = "";
-$Game::DefaultPlayerDataBlock = "";
+$Game::DefaultPlayerClass = "tgeBuggyCar";
+$Game::DefaultPlayerDataBlock = "tgeBuggyCar";
 $Game::DefaultPlayerSpawnGroups = "CameraSpawnPoints PlayerSpawnPoints PlayerDropPoints";
 
 //-----------------------------------------------------------------------------
@@ -329,7 +329,7 @@ function GameConnection::createCar(%this, %spawnPoint)
 
    // Create the player object
    %car = new WheeledVehicle() {
-      dataBlock = CheetahCar;
+      dataBlock = $Game::DefaultPlayerDataBlock;
       client = %this;
    };
    MissionCleanup.add(%car);
