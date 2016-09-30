@@ -27,8 +27,13 @@ function serverCmdReset(%client)
 {
    if (isObject(%client.car))
    {
+      %spawnPoint=%client.car.spawnPoint;
       %client.car.delete();
-      %client.spawnCar();
+      if(isObject(%spawnPoint)){
+         %client.createCar(%spawnPoint);
+      }else{
+         %client.spawnCar();
+      }
       %client.setControlObject(%client.car);
       %client.nextCheck = 1;
    } else {

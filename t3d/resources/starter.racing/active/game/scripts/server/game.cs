@@ -230,6 +230,61 @@ function startGame()
     schedule(%t * 1000, 0, "countThree");
 }
 
+function countThree()
+{
+   // Tell the client to count.
+   for( %clientIndex = 0; %clientIndex < ClientGroup.getCount(); %clientIndex++ ) {
+      %cl = ClientGroup.getObject( %clientIndex );
+      commandToClient(%cl, 'SetCounter', 3);
+   }
+
+	schedule(1200, 0, "countTwo");
+}
+
+function countTwo()
+{
+   // Tell the client to count.
+   for( %clientIndex = 0; %clientIndex < ClientGroup.getCount(); %clientIndex++ ) {
+      %cl = ClientGroup.getObject( %clientIndex );
+      commandToClient(%cl, 'SetCounter', 2);
+   }
+
+	schedule(1200, 0, "countOne");
+}
+
+function countOne()
+{
+   // Tell the client to count.
+   for( %clientIndex = 0; %clientIndex < ClientGroup.getCount(); %clientIndex++ ) {
+      %cl = ClientGroup.getObject( %clientIndex );
+      commandToClient(%cl, 'SetCounter', 1);
+   }
+
+	schedule(1200, 0, "startRace");
+}
+
+function startRace()
+{
+   // Inform the client we're starting up
+   for( %clientIndex = 0; %clientIndex < ClientGroup.getCount(); %clientIndex++ ) {
+      %cl = ClientGroup.getObject( %clientIndex );
+      commandToClient(%cl, 'GameStart');
+
+      // Other client specific setup..
+      %cl.lap = 0;
+      %cl.nextCheck = 1;
+      %cl.setControlObject(%cl.car);
+      %cl.camera.setFlyMode();
+	%cl.setFirstPerson(false);
+   }
+   $Game::Running = true;
+   // Start the game timer
+//   if ($Game::Duration)
+//      $Game::Schedule = schedule($Game::Duration * 1000, 0, "onGameDurationEnd" );
+   
+}
+
+
 //-----------------------------------------------------------------------------
 // Called once the game has ended
 //-----------------------------------------------------------------------------
@@ -311,8 +366,8 @@ function onCyclePauseEnd()
 
 function GameConnection::spawnCar(%this)
 {
-   // Combination create player and drop him somewhere
-   %spawnPoint = pickPlayerSpawnPoint($Game::DefaultPlayerSpawnGroups);
+   // Find a spawn point and add a new car to the race.
+   %spawnPoint = pickSpawnPoint();
    %this.createCar(%spawnPoint);
 }   
 
@@ -333,7 +388,10 @@ function GameConnection::createCar(%this, %spawnPoint)
       client = %this;
    };
    MissionCleanup.add(%car);
+   
    // Player setup...
+   %spawnPoint.car = %car;
+   %car.spawnPoint = %spawnPoint;
    %car.setTransform(%spawnPoint.getTransform());
    %car.setShapeName("Racer");
 
@@ -344,58 +402,27 @@ function GameConnection::createCar(%this, %spawnPoint)
    %this.car = %car;
 }
 
-
-
-function countThree()
-{
-   // Tell the client to count.
-   for( %clientIndex = 0; %clientIndex < ClientGroup.getCount(); %clientIndex++ ) {
-      %cl = ClientGroup.getObject( %clientIndex );
-      commandToClient(%cl, 'SetCounter', 3);
+function pickSpawnPoint() 
+{      
+   %groupName = "PlayerDropPoints";
+   %group = nameToID(%groupName);
+   if (%group != -1) {
+      %count = %group.getCount();
+      if (%count != 0) {
+         for(%i=0;%i<%count;%i++){
+            %spawn = %group.getObject(%i);
+            if(!%spawn.car){
+               return %spawn;
+            }
+         }
+      }
+      else
+         error("No spawn points found in " @ %groupName);
    }
+   else
+      error("Missing spawn points group " @ %groupName);
 
-	schedule(1200, 0, "countTwo");
-}
-
-function countTwo()
-{
-   // Tell the client to count.
-   for( %clientIndex = 0; %clientIndex < ClientGroup.getCount(); %clientIndex++ ) {
-      %cl = ClientGroup.getObject( %clientIndex );
-      commandToClient(%cl, 'SetCounter', 2);
-   }
-
-	schedule(1200, 0, "countOne");
-}
-
-function countOne()
-{
-   // Tell the client to count.
-   for( %clientIndex = 0; %clientIndex < ClientGroup.getCount(); %clientIndex++ ) {
-      %cl = ClientGroup.getObject( %clientIndex );
-      commandToClient(%cl, 'SetCounter', 1);
-   }
-
-	schedule(1200, 0, "startRace");
-}
-
-function startRace()
-{
-   // Inform the client we're starting up
-   for( %clientIndex = 0; %clientIndex < ClientGroup.getCount(); %clientIndex++ ) {
-      %cl = ClientGroup.getObject( %clientIndex );
-      commandToClient(%cl, 'GameStart');
-
-      // Other client specific setup..
-      %cl.lap = 0;
-      %cl.nextCheck = 1;
-      %cl.setControlObject(%cl.car);
-      %cl.camera.setFlyMode();
-	%cl.setFirstPerson(false);
-   }
-   $Game::Running = true;
-   // Start the game timer
-//   if ($Game::Duration)
-//      $Game::Schedule = schedule($Game::Duration * 1000, 0, "onGameDurationEnd" );
-   
+   // Could be no spawn points, in which case we'll stick the
+   // player at the center of the world.
+   return "0 0 300 1 0 0 0";
 }

@@ -85,7 +85,7 @@ function initClient()
    exec("art/gui/playerList.gui");
    exec("art/gui/endGameGui.gui");  
    exec("art/gui/chatHud.gui");
-
+   exec("art/gui/joinServerGui.gui");
    // Gui scripts
    exec("scripts/gui/playGui.cs");
    exec("scripts/gui/startupGui.cs");
