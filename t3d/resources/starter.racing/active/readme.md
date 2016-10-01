@@ -20,3 +20,7 @@
 <tr><td>checkpoint</td><td>Integer defining the order checkpoints should be entered.</td></tr>
 <tr><td>isLast</td><td>Boolean defining which checkpoint ends the race.</td></tr>
 </table>
+<h2>Installation</h2>
+This resource is based on T3D 3.8 and project manager 2.2. 
+
+To install, create a new project using the empty template. Copy all files into the project directory and regenerate the project.
